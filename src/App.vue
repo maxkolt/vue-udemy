@@ -4,6 +4,15 @@
     <h2>{{ num * 3 }}</h2>
     <h3>{{ obj }}</h3>
     <a v-bind:href="linkUrl">Link</a>
+    <template  v-if="msgIsVisible === 1">
+      <div class="message">Some Message!</div>
+    </template>
+    <template  v-else-if="msgIsVisible === 2">
+      <div class="message">v else message</div>
+    </template>
+    <template  v-else>
+      <div class="message">Another Message!</div>
+    </template>
 
   </section>
 </template>
@@ -20,10 +29,10 @@ export default {
     obj: {
       age: 30
     },
-    linkUrl: 'http//google.com'
+    linkUrl: 'https://google.com',
+    msgIsVisible: 3
   }),
-  methods:{
-  }
+  methods: {}
 
 }
 
