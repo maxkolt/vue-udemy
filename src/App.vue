@@ -1,16 +1,28 @@
 <template>
   <section id="app">
-    <ul>
-      <!-- <li v-for="(color, index) in colors" :key="index">Это индекс: {{ index }} это цвет: {{ color }}</li>-->
-      <!-- <li v-for="user in users" :key="user.id">{{ user.name }} {{ user.age }}</li>-->
-      <li v-for="(value, name, index) in product" :key="value">{{ index }} {{ name }} {{ value }}</li>
+    <!--    <ul>-->
+    <!-- <li v-for="(color, index) in colors" :key="index">Это индекс: {{ index }} это цвет: {{ color }}</li>-->
+    <!-- <li v-for="user in users" :key="user.id">{{ user.name }} {{ user.age }}</li>-->
+    <!--<li v-for="(value, name, index) in product" :key="value">{{ index }} {{ name }} {{ value }}</li>-->
 
-      <strong>{{ allUsersTotalAge }}</strong>
-      <div>
-        <!-- <input type="text" @keyup.enter="addNewColor"> -->
-        <input type="text" @keyup.enter="deleteProp">
-      </div>
-    </ul>
+    <!--<strong>{{ allUsersTotalAge }}</strong>-->
+    <div>
+      <!-- <input type="text" @keyup.enter="addNewColor"> -->
+      <!--<input type="text" @keyup.enter="deleteProp">-->
+      <section>
+        <!--<button type="submit" @click="reverseString">Перевернуть</button>-->
+        <!--<h2>{{ title }}</h2>-->
+        <!--<button type="submit" @click="worldLength">Самое длинное</button>-->
+        <!--<br>-->
+        <!--<p>Самое длинное: {{ wordMax }}</p>-->
+        <!--<br>-->
+        <h1 class="title"
+            :class="[classObj, activeClass]"
+            :style="{'font-size': fontSize + 'px'}"
+        >Hello World</h1>
+      </section>
+    </div>
+    <!--</ul>-->
 
   </section>
 </template>
@@ -31,29 +43,53 @@ export default {
       brand: 'Apple',
       model: 'Iphone 11',
       price: '$1000'
-    }
+    },
+    title: 'Переверни меня И найди самое длинное',
+    wordMax: '',
+    activeClass: "my-active-class",
+    isActive: false,
+    fontSize: 30
   }),
   computed: {
     allUsersTotalAge() {
       let total = 0;
-      for (let i = 0; i < this.users; i++) {
-        let age = this.users[i].age;
+      for (let user of this.users) {
+        let age = user.age;
         total += age;
       }
-      return total;
+      return total
+    },
+    classObj() {
+      return {
+        'active-class': this.isActive,
+        "error": !this.isActive
+      }
     }
   },
   methods: {
+    worldLength() {
+      let wordArray = this.title.split(' ');
+      for (let w of wordArray) {
+        if (w.length > this.wordMax.length) {
+          this.wordMax = w;
+        }
+      }
+    },
     addNewColor(e) {
       this.colors.push(e.target.value);
       this.colors[this.colors.length] = e.target.value;
     },
     deleteProp(e) {
-      //delete this.product[e.target.value];
+      delete this.product[e.target.value];
       this.$delete(this.product, e.target.value);
-    }
+    },
+    reverseString() {
+      this.title = this.title.split("").reverse().join("");
+    },
+
   },
 }
+
 </script>
 
 <style>
