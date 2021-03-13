@@ -18,7 +18,7 @@
         <!--<br>-->
         <h1 class="title"
             :class="[classObj, activeClass]"
-            :style="{'font-size': fontSize + 'px'}"
+            :style="{'border': border + 'px'}"
         >Hello World</h1>
       </section>
     </div>
@@ -46,9 +46,8 @@ export default {
     },
     title: 'Переверни меня И найди самое длинное',
     wordMax: '',
-    activeClass: "my-active-class",
-    isActive: false,
-    fontSize: 30
+    activeClass: "inner-class",
+    isActive: false
   }),
   computed: {
     allUsersTotalAge() {
@@ -99,6 +98,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: table;
+  vertical-align: middle;
+  margin: 20% auto;
+  border: 2px solid black;
 }
 </style>
