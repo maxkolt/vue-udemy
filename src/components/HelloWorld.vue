@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <h1>{{ title }}</h1>
     <button @click="onClick">Sent event</button>
   </div>
 </template>
@@ -7,15 +8,30 @@
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    title: {
+      type: String,
+      default: 'default title',
+    },
+    user: {
+      type: Object,
+      validator(value) {
+        console.log(value);
+        return value.name;
+      }
+    }
+  },
   data: () => ({
     counter: 0
   }),
-  methods: {
-    onClick() {
-      this.counter += 1;
-      this.$emit('onChangeCounter', this.counter);
-    }
+  methods:
+{
+  onClick()
+  {
+    this.counter += 1;
+    this.$emit('onChangeCounter', this.counter);
   }
+}
 }
 </script>
 

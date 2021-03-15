@@ -21,7 +21,7 @@
             :class="[classObj, activeClass]"
         >Hello World</h1>
       </section>
-      <HelloWorld @onChangeCounter="onChengCounterInComponent"/>
+      <HelloWorld :user="user" :title="title" @onChangeCounter="onChengCounterInComponent"/>
     </div>
     <!--</ul>-->
 
@@ -35,6 +35,11 @@ export default {
   name: 'App',
    components: {HelloWorld},
   data: () => ({
+    title: 'Some title',
+    user:{
+      name:'Maxim'
+    },
+
     colors: ['red', 'blue', 'black'],
     users: [
       {name: 'maksim', age: 28, id: '1'},
@@ -45,7 +50,7 @@ export default {
       model: 'Iphone 11',
       price: '$1000'
     },
-    title: 'Переверни меня И найди самое длинное',
+    //title: 'Переверни меня И найди самое длинное',
     wordMax: '',
     activeClass: "inner-class",
     isActive: false
