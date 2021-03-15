@@ -1,5 +1,6 @@
 <template>
   <section id="app">
+
     <!--    <ul>-->
     <!-- <li v-for="(color, index) in colors" :key="index">Это индекс: {{ index }} это цвет: {{ color }}</li>-->
     <!-- <li v-for="user in users" :key="user.id">{{ user.name }} {{ user.age }}</li>-->
@@ -18,9 +19,9 @@
         <!--<br>-->
         <h1 class="title"
             :class="[classObj, activeClass]"
-            :style="{'border': border + 'px'}"
         >Hello World</h1>
       </section>
+      <HelloWorld @onChangeCounter="onChengCounterInComponent"/>
     </div>
     <!--</ul>-->
 
@@ -28,11 +29,11 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  // components: {HelloWorld}
+   components: {HelloWorld},
   data: () => ({
     colors: ['red', 'blue', 'black'],
     users: [
@@ -66,6 +67,10 @@ export default {
     }
   },
   methods: {
+    onChengCounterInComponent(value){
+console.log('In app vue, counter:', value);
+    },
+
     worldLength() {
       let wordArray = this.title.split(' ');
       for (let w of wordArray) {
@@ -101,6 +106,6 @@ export default {
   display: table;
   vertical-align: middle;
   margin: 20% auto;
-  border: 2px solid black;
+
 }
 </style>
